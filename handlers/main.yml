@@ -1,6 +1,6 @@
 ---
 
-- name: Reload Systemd Daemon
+- name: Reload Systemd
   systemd:
     daemon_reload: yes
 
