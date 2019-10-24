@@ -1,0 +1,43 @@
+---
+
+# required:
+#gie_proxy_dir:
+
+# optional:
+gie_proxy_git_repo: https://github.com/usegalaxy-eu/galaxy-gie-proxy
+#gie_proxy_git_version:
+#gie_proxy_npm_executable:
+#gie_proxy_nodejs_executable:
+gie_proxy_service_name: galaxy-gie-proxy
+gie_proxy_user: galaxy
+gie_proxy_group: galaxy
+
+#gie_proxy_ip:
+#gie_proxy_port:
+#gie_proxy_sessions_path:
+#gie_proxy_verbose:
+
+gie_proxy_command_line: >-
+    {{ gie_proxy_nodejs_executable |default(gie_proxy_virtualenv ~ '/bin/nodejs' if gie_proxy_virtualenv is defined else 'nodejs') }}
+        {{ gie_proxy_dir }}/lib/main.js
+        {{ ('--ip=' ~ gie_proxy_ip) |default('') }}
+        {{ ('--port=' ~ gie_proxy_port) |default('') }}
+        {{ ('--sessions=' ~ gie_proxy_sessions_path) |default('') }}
+        {{ '--verbose' if gie_proxy_verbose else '' }}
+
+# options: "package", "nodeenv"
+#gie_proxy_setup_nodejs:
+
+# options: "systemd"
+#gie_proxy_setup_service:
+
+# gie_proxy_setup_nodejs == "package" options:
+gie_proxy_nodejs_package: nodejs
+
+# gie_proxy_setup_nodejs == "nodeenv" options:
+# required:
+#gie_proxy_virtualenv:
+# optional:
+#gie_proxy_nodejs_version:
+#gie_proxy_virtualenv_command:
+#gie_proxy_virtualenv_python:

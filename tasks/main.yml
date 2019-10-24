@@ -1,0 +1,20 @@
+---
+
+- name: Include Node.js setup tasks
+  include_tasks: nodejs.yml
+  when: gie_proxy_setup_nodejs is defined
+
+- name: Install GIE Proxy
+  git:
+    dest: "{{ gie_proxy_dir }}"
+    repo: "{{ gie_proxy_git_repo }}"
+    version: "{{ gie_proxy_git_version |default(omit) }}"
+
+- name: Install Node.js modules
+  npm:
+    path: "{{ gie_proxy_dir }}"
+    executable: "{{ gie_proxy_npm_executable |default(gie_proxy_virtualenv ~ '/bin/npm' if gie_proxy_setup_nodejs == 'nodeenv' else omit) }}"
+
+- name: Include Service setup tasks
+  include_tasks: service.yml
+  when: gie_proxy_setup_service is defined
