@@ -1,0 +1,11 @@
+galaxy_info:
+  author: The Galaxy Community
+  description: Install and manage the proxy server used by Galaxy for Interactive Environments/Tools
+  license: MIT
+  min_ansible_version: 2.7
+  galaxy_tags:
+    - galaxy
+    - node
+    - nodejs
+    - proxy
+dependencies: []
