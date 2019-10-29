@@ -13,6 +13,9 @@ ExecStart={{ gie_proxy_command_line }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed
 KillSignal=SIGINT
+
+Restart=on-failure
+RestartSec=1s
  
 [Install]
 WantedBy=multi-user.target
