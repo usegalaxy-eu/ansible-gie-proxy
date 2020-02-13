@@ -8,4 +8,6 @@ galaxy_info:
     - node
     - nodejs
     - proxy
+  platforms:
+    - name: all
 dependencies: []
