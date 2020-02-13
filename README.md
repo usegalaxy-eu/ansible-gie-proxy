@@ -42,7 +42,7 @@ Including an example of how to use your role (for instance, with variables passe
     gie_proxy_verbose: true
     gie_proxy_sessions_path: "/srv/galaxy/var/data/interactivetools_map.sqlite"
   roles:
-    - usegalaxy-eu.gie-proxy
+    - usegalaxy_eu.gie_proxy
 ```
 
 License
