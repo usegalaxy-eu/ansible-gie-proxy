@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: gie_proxy
   author: The Galaxy Community
   description: Install and manage the proxy server used by Galaxy for Interactive Environments/Tools
   license: MIT
