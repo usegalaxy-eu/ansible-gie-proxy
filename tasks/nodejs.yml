@@ -12,8 +12,8 @@
       pip:
         name: nodeenv
         virtualenv: "{{ gie_proxy_virtualenv }}"
-        virtualenv_command: "{{ gie_proxy_virtulenv_command |default(omit) }}"
-        virtualenv_python: "{{ gie_proxy_virtulenv_python |default(omit) }}"
+        virtualenv_command: "{{ gie_proxy_virtualenv_command |default(omit) }}"
+        virtualenv_python: "{{ gie_proxy_virtualenv_python |default(omit) }}"
 
     - name: Add virtualenv to $PATH
       set_fact:
