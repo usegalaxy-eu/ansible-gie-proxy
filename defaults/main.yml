@@ -5,7 +5,7 @@
 #gie_proxy_sessions_path:
 
 # optional:
-gie_proxy_git_repo: https://github.com/usegalaxy-eu/gie-nodejs-proxy
+gie_proxy_git_repo: https://github.com/galaxyproject/gx-it-proxy
 #gie_proxy_git_version:
 #gie_proxy_npm_executable:
 #gie_proxy_nodejs_executable:
