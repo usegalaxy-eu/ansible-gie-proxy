@@ -38,3 +38,5 @@ gie_proxy_nodejs_package: nodejs
 #gie_proxy_nodejs_version:
 #gie_proxy_virtualenv_command:
 #gie_proxy_virtualenv_python:
+
+gie_proxy_install: true
