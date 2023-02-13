@@ -11,6 +11,7 @@
     version: "{{ gie_proxy_git_version |default(omit) }}"
   notify:
     - Restart GIE Proxy
+  when: gie_proxy_install
 
 - name: Install Node.js modules
   npm:
@@ -19,6 +20,7 @@
     unsafe_perm: "{{ gie_proxy_npm_unsafe_perm |default(omit) }}"
   environment:
     PATH: "{{ ansible_path |default(ansible_env.PATH) }}"
+  when: gie_proxy_install
 
 - name: Include Service setup tasks
   include_tasks: service.yml
