@@ -3,8 +3,10 @@
 - name: Reload Systemd
   systemd:
     daemon_reload: yes
+  when: gie_proxy_setup_service == "systemd"
 
 - name: Restart GIE Proxy
   service:
     name: "{{ gie_proxy_service_name }}"
     state: restarted
+  when: gie_proxy_setup_service == "systemd"
