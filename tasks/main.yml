@@ -9,8 +9,6 @@
     dest: "{{ gie_proxy_dir }}"
     repo: "{{ gie_proxy_git_repo }}"
     version: "{{ gie_proxy_git_version |default(omit) }}"
-  notify:
-    - Restart GIE Proxy
   when: gie_proxy_install
 
 - name: Install Node.js modules
@@ -24,4 +22,6 @@
 
 - name: Include Service setup tasks
   include_tasks: service.yml
+  notify:
+    - Restart GIE Proxy
   when: gie_proxy_setup_service is not none
