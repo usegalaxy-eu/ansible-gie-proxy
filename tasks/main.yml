@@ -22,6 +22,4 @@
 
 - name: Include Service setup tasks
   include_tasks: service.yml
-  notify:
-    - Restart GIE Proxy
   when: gie_proxy_setup_service is not none
