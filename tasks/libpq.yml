@@ -1,0 +1,20 @@
+- name: Error out when the platform is unsupported
+  ansible.builtin.fail:
+    msg: "Cannot install `libpq`, OS family {{ ansible_facts['os_family'] }} unsupported"
+  when: "ansible_facts['os_family'] not in ['RedHat']"
+
+- name: Install `libpq` and build tools (RedHat)
+  # needed to build the npm package `pg-native`, an optional dependency of the
+  # interactive tools proxy
+  become: true
+  ansible.builtin.package:
+    name:
+      - libpq
+      - libpq-devel
+      - make
+      - glibc
+      - gcc-c++
+      - which
+      - redhat-rpm-config
+    state: present
+  when: "'RedHat' in ansible_facts['os_family']"
