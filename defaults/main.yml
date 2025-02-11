@@ -40,4 +40,17 @@ gie_proxy_nodejs_package: nodejs
 #gie_proxy_virtualenv_command:
 #gie_proxy_virtualenv_python:
 
+# install `libpq` to build `pg-native`, a nodejs package required to use the
+# interactive tools proxy with PostgreSQL
+gie_proxy_setup_libpq: |-
+  {{
+      {
+        'RedHat': true,
+        'Other': false,
+      }[ansible_facts.os_family | default('Other')]
+  }} and gie_proxy_install
+
 gie_proxy_install: true
+
+# enable PostgreSQL support (install `pg-native` npm package)
+gie_proxy_install_pgnative: gie_proxy_install and gie_proxy_setup_libpq

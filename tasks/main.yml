@@ -11,14 +11,31 @@
     version: "{{ gie_proxy_git_version |default(omit) }}"
   when: gie_proxy_install
 
+- name: Install `libpq` and build tools
+  # used to build `pg-native` from the npm registry,
+  # needed make the GIE Proxy work with PostgreSQL
+  include_tasks: libpq.yml
+  when: gie_proxy_setup_libpq
+
 - name: Install Node.js modules
   npm:
     path: "{{ gie_proxy_dir }}"
     executable: "{{ gie_proxy_npm_executable |default(omit) }}"
     unsafe_perm: "{{ gie_proxy_npm_unsafe_perm |default(omit) }}"
+    no_optional: true
   environment:
     PATH: "{{ ansible_path |default(ansible_env.PATH) }}"
   when: gie_proxy_install
+
+- name: Install `pg-native` Node.js module
+  npm:
+    name: pg-native
+    path: "{{ gie_proxy_dir }}"
+    executable: "{{ gie_proxy_npm_executable |default(omit) }}"
+    unsafe_perm: "{{ gie_proxy_npm_unsafe_perm |default(omit) }}"
+  environment:
+    PATH: "{{ ansible_path |default(ansible_env.PATH) }}"
+  when: gie_proxy_install_pgnative  
 
 - name: Include Service setup tasks
   include_tasks: service.yml
