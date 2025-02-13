@@ -11,14 +11,14 @@
         - Reload Systemd
         - Start and enable GIE Proxy
 
+    - name: Flush handlers
+      meta: flush_handlers
+
     # Need an exclusive restart here in cases when the service file does not get udpated but the code does
     - name: Restart GIE Proxy
       service:
         name: "{{ gie_proxy_service_name }}"
         state: restarted
-
-    - name: Flush handlers
-      meta: flush_handlers
 
     - name: Ensure GIE Proxy service is enabled and running
       service:
