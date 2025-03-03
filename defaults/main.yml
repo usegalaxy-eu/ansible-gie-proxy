@@ -10,6 +10,8 @@ gie_proxy_git_repo: https://github.com/galaxyproject/gx-it-proxy
 #gie_proxy_npm_executable:
 #gie_proxy_nodejs_executable:
 gie_proxy_service_name: galaxy-gie-proxy
+gie_proxy_service_restart_mode: on-failure
+gie_proxy_service_restartsec: 1s
 gie_proxy_user: galaxy
 gie_proxy_group: galaxy
 
